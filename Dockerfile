@@ -25,6 +25,16 @@ RUN bash $INST_SCRIPTS/remmina/install_remmina.sh  && rm -rf $INST_SCRIPTS/remmi
 COPY ./src/ubuntu/install/obs $INST_SCRIPTS/obs/
 RUN bash $INST_SCRIPTS/obs/install_obs.sh  && rm -rf $INST_SCRIPTS/obs/
 
+### OBS Studio pre-config
+RUN mkdir -p $HOME/.config/obs-studio
+COPY ./src/ubuntu/config/obs-studio $HOME/.config/obs-studio
+
+### Remmina pre-config
+RUN mkdir -p $HOME/.config/remmina
+RUN mkdir -p $HOME/.local/share/remmina
+COPY ./src/ubuntu/config/remmina $HOME/.config/remmina
+COPY ./src/ubuntu/local-share/remmina $HOME/.local/share/remmina
+
 ######### End Customizations ###########
 
 RUN chown 1000:0 $HOME
