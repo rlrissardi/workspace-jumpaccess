@@ -21,12 +21,19 @@ ENV INST_SCRIPTS $STARTUPDIR/install
 COPY ./src/ubuntu/install/remmina $INST_SCRIPTS/remmina/
 RUN bash $INST_SCRIPTS/remmina/install_remmina.sh  && rm -rf $INST_SCRIPTS/remmina/
 COPY ./src/ubuntu/install/remmina/custom_startup.sh $STARTUPDIR/custom_startup.sh
-RUN chmod +x $STARTUPDIR/custom_startup.sh
+#RUN chmod +x $STARTUPDIR/custom_startup.sh
 RUN chmod 755 $STARTUPDIR/custom_startup.sh
 
 ### Install OBS Studio
 COPY ./src/ubuntu/install/obs $INST_SCRIPTS/obs/
 RUN bash $INST_SCRIPTS/obs/install_obs.sh  && rm -rf $INST_SCRIPTS/obs/
+#COPY ./src/ubuntu/install/obs/start_minimized.py $STARTUPDIR/start_minimized.py
+#RUN chmod +x $STARTUPDIR/start_minimized.py
+#RUN chmod 755 $STARTUPDIR/start_minimized.py
+
+### xfce4 pre-config
+RUN mkdir -p $HOME/.config/xfce4
+COPY ./src/ubuntu/config/xfce4/ $HOME/.config/xfce4/
 
 ### OBS Studio pre-config
 RUN mkdir -p $HOME/.config/obs-studio
@@ -43,7 +50,7 @@ RUN chown -R 1000:0 $HOME
 # Update the desktop environment to be optimized for a single application
 RUN cp $HOME/.config/xfce4/xfconf/single-application-xfce-perchannel-xml/* $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/
 RUN cp /usr/share/extra/backgrounds/bg_kasm.png /usr/share/extra/backgrounds/bg_default.png
-RUN apt-get remove -y xfce4-panel
+#RUN apt-get remove -y xfce4-panel
 
 ######### End Customizations ###########
 

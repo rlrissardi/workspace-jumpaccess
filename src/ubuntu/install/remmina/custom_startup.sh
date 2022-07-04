@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 START_COMMAND="remmina"
-RECORDING_COMMAND="obs --startrecording --minimize-to-tray --scene Untitled"
+RECORDING_COMMAND="obs --minimize-to-tray --startrecording --scene CapturaTela"
 PGREP="remmina"
 DEFAULT_ARGS=""
 export MAXIMIZE="false"

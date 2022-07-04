@@ -13,6 +13,9 @@ apt-get install -y mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev
 add-apt-repository -y ppa:obsproject/obs-studio
 apt-get update
 apt-get install -y obs-studio
+# start_minimized requirements
+apt-get install -y wmctrl xdotool python3
+
 cp /usr/share/applications/com.obsproject.Studio.desktop $HOME/Desktop/
 chmod +x $HOME/Desktop/com.obsproject.Studio.desktop
 
