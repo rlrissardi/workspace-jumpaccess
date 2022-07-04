@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 START_COMMAND="remmina"
+RECORDING_COMMAND="obs --startrecording --minimize-to-tray --scene Untitled"
 PGREP="remmina"
 DEFAULT_ARGS=""
 export MAXIMIZE="false"
@@ -53,6 +54,7 @@ kasm_exec() {
         /usr/bin/filter_ready
         /usr/bin/desktop_ready
         bash ${MAXIMIZE_SCRIPT} &
+        $RECORDING_COMMAND &
         $START_COMMAND $ARGS $OPT_URL
     else
         echo "No URL specified for exec command. Doing nothing."
@@ -79,6 +81,7 @@ kasm_startup() {
                 set +e
                 bash ${MAXIMIZE_SCRIPT} &
                 update_profile
+                $RECORDING_COMMAND &
                 $START_COMMAND $ARGS $URL $REMMINA_PROFILE
                 set -e
             fi
