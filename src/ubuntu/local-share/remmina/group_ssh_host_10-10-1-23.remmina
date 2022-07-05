@@ -1,5 +1,5 @@
 [remmina]
-name=Host
+name=sdf.org
 ssh_stricthostkeycheck=0
 exec=
 sshlogenabled=0
@@ -7,7 +7,7 @@ enable-autostart=0
 profile-lock=0
 ssh_tunnel_certfile=
 sshsavesession=0
-server=10.10.1.23
+server=tty.sdf.org
 ssh_tunnel_enabled=0
 ssh_auth=0
 postcommand=
