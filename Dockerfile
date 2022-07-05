@@ -14,7 +14,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV KASM_RX_HOME $STARTUPDIR/kasmrx
 ENV INST_SCRIPTS $STARTUPDIR/install
 
-
 ######### Customize Container Here ###########
 
 ### Install Remmina
@@ -27,9 +26,6 @@ RUN chmod 755 $STARTUPDIR/custom_startup.sh
 ### Install OBS Studio
 COPY ./src/ubuntu/install/obs $INST_SCRIPTS/obs/
 RUN bash $INST_SCRIPTS/obs/install_obs.sh  && rm -rf $INST_SCRIPTS/obs/
-#COPY ./src/ubuntu/install/obs/start_minimized.py $STARTUPDIR/start_minimized.py
-#RUN chmod +x $STARTUPDIR/start_minimized.py
-#RUN chmod 755 $STARTUPDIR/start_minimized.py
 
 ### xfce4 pre-config
 RUN mkdir -p $HOME/.config/xfce4
